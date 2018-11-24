@@ -47,14 +47,32 @@ public class LargestPalindrome {
         System.out.println(getLargestPalindrome(2));
         System.out.println(getLargestPalindrome(3));
         System.out.println(isPalindrome("rataatar"));
+        System.out.println(isPalindrome("kayak"));
+        System.out.println(isPalindrome("noon"));
+        System.out.println(isPalindrome("ala"));
+        System.out.println(isPalindrome("tata"));
 
     }
+//    public static boolean isPalindrome(String word) {
+//        if (word == null || word.isEmpty()) {
+//            return false;
+//        }
+//        String reverse = new StringBuilder(word).reverse().toString();
+//        return word.toLowerCase().equals(reverse.toLowerCase());
+//    }
+
     public static boolean isPalindrome(String word) {
         if (word == null || word.isEmpty()) {
             return false;
         }
-        String reverse = new StringBuilder(word).reverse().toString();
-        return word.toLowerCase().equals(reverse.toLowerCase());
+        char[] chars = word.toCharArray();
+        int halfIndex = chars.length % 2 == 0 ? chars.length / 2 : chars.length / 2 + 1;
+        for (int i = 0; i < halfIndex; i++) {
+            if (chars[i] != chars[chars.length - 1 - i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
